@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>צדק לרזיאל - בונים עתיד טוב יותר</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50; /* כחול כהה */
+            --secondary-color: #34495e; /* כחול כהה יותר */
+            --accent-color: #f39c12; /* כתום-זהוב לתקווה */
+            --light-bg: #ecf0f1; /* אפור בהיר */
+            --white: #ffffff;
+            --dark-text: #2c3e50;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            text-align: right;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        /* Header / Navbar */
+        .header {
+            background-color: var(--white);
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .header .logo img {
+            height: 40px;
+            margin-left: 10px;
+        }
+
+        .header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .header nav ul li {
+            margin-left: 20px;
+        }
+
+        .header nav ul li a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .header nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Hero Section (Main feature area) */
+        .hero-section {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 50px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            order: 1; /* Image first on mobile */
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border: 5px solid var(--accent-color); /* מסגרת צהובה סביב התמונה */
+        }
+
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            text-align: right;
+            order: 2; /* Content after image on mobile */
+        }
+
+        .hero-content h1 {
+            font-size: 3.2em;
+            margin-bottom: 20px;
+            font-weight: 900;
+            color: var(--accent-color);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #e08e0b;
+            transform: translateY(-3px);
+        }
+
+        /* Why Donate Section */
+        .why-donate-section {
+            background: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .why-donate-section h2 {
+            font-size: 2.8em;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            font-weight: 900;
+        }
+
+        .why-donate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .reason-card {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .reason-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .reason-card i {
+            font-size: 2.5em;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .reason-card h3 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .reason-card p {
+            font-size: 1.1em;
+            color: var(--dark-text);
+        }
+
+        /* Donate Options Section */
+        .donate-options-section {
+            background: var(--light-bg);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .donate-options-section h2 {
+            font-size: 2.8em;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            font-weight: 900;
+        }
+
+        .payment-methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .payment-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .payment-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .payment-card .icon-and-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .payment-card .icon-and-title img {
+            height: 50px;
+            margin-left: 15px;
+            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.2)); /* צל לאייקון */
+        }
+
+        .payment-card h3 {
+            font-size: 2em;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .payment-card p {
+            font-size: 1.1em;
+            color: var(--dark-text);
+            margin-bottom: 25px;
+        }
+
+        .payment-card .details {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: right;
+            font-size: 0.95em;
+            line-height: 1.7;
+            color: var(--secondary-color);
+            font-weight: 300;
+        }
+
+        .payment-card .btn-pay {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            align-self: center; /* כדי שיישאר במרכז */
+            width: 80%;
+            max-width: 250px;
+            font-weight: 700;
+        }
+
+        .payment-card .btn-pay:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-text);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            margin: 0 10px;
+            font-size: 1.5em;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+            }
+            .header nav ul {
+                margin-top: 15px;
+            }
+            .header nav ul li {
+                margin: 0 10px;
+            }
+
+            .hero-section {
+                flex-direction: column;
+                padding: 40px 20px;
+            }
+            .hero-image {
+                order: 2; /* Image after content on mobile */
+            }
+            .hero-content {
+                order: 1; /* Content first on mobile */
+                text-align: center;
+            }
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+            .hero-content p {
+                font-size: 1.2em;
+            }
+            .btn {
+                font-size: 1.1em;
+                padding: 12px 30px;
+            }
+
+            .why-donate-section h2, .donate-options-section h2 {
+                font-size: 2em;
+            }
+
+            .payment-methods-grid, .why-donate-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2em;
+            }
+            .hero-content p {
+                font-size: 1em;
+            }
+            .payment-card h3 {
+                font-size: 1.6em;
+            }
+            .payment-card .icon-and-title img {
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container header">
+        <div class="logo">
+            <img src="https://img.icons8.com/ios-filled/50/2c3e50/hand-holding-heart.png" alt="לוגו תרומה">
+            צדק לרזיאל
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#hero-section">ראשי</a></li>
+                <li><a href="#why-donate">למה לתרום?</a></li>
+                <li><a href="#donate-options">תרומה</a></li>
+                <li><a href="#contact">צור קשר</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <section id="hero-section" class="hero-section">
+        <div class="container hero-content">
+            <h1>חיים בכבוד זו זכות, לא פריבילגיה. עזרו לרזיאל.</h1>
+            <p>רזיאל נלחם על זכותו לקיום בסיסי, ללא מסמכים וללא הגנה. הוא זקוק לעזרתנו כדי לבנות עתיד ראוי. כל תרומה, קטנה כגדולה, היא צעד לכיוון הצדק.</p>
+            <a href="#donate-options" class="btn">תמכו ברזיאל עכשיו</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://img.haarets.co.il/bs/0000017f-db2f-db22-a17f-ffbfb3c10000/e3/da/2ab73b9afd0bbbcca83062636455/1147771500.jpg" alt="רזיאל - זקוק לעזרה">
+        </div>
+    </section>
+
+    <section id="why-donate" class="why-donate-section">
+        <div class="container">
+            <h2>למה התרומה שלך קריטית לרזיאל?</h2>
+            <div class="why-donate-grid">
+                <div class="reason-card">
+                    <i class="fas fa-gavel"></i>
+                    <h3>סיוע משפטי והסדרת מעמד</h3>
+                    <p>התרומה שלך תאפשר לרזיאל ייצוג משפטי הולם שיסייע לו להסדיר את מעמדו, לקבל תעודות ולהפוך לאדם בעל זכויות מלאות במדינה.</p>
+                </div>
+                <div class="reason-card">
+                    <i class="fas fa-home"></i>
+                    <h3>קורת גג ומחסה בטוח</h3>
+                    <p>כסף שייגויס יעניק לרזיאל מקום מגורים יציב ובטוח, הרחק מסכנות הרחוב וחוסר הוודאות היומיומי.</p>
+                </div>
+                <div class="reason-card">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>קיום בסיסי ומזון</h3>
+                    <p>אנו נדאג שרזיאל יקבל את צרכי המחיה הבסיסיים ביותר, כולל מזון, ביגוד וגישה לשירותי רפואה דחופים.</p>
+                </div>
+                <div class="reason-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>הזדמנות לחינוך ותעסוקה</h3>
+                    <p>לאחר הסדרת מעמדו, נסייע לרזיאל למצוא מסגרות לחינוך והכשרה מקצועית שיפתחו לו דלתות לתעסוקה הוגנת.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="donate-options" class="donate-options-section">
+        <div class="container">
+            <h2>בחרו דרך לתרום והיו חלק מהשינוי</h2>
+            <div class="payment-methods-grid">
+
+                <div class="payment-card">
+                    <div class="icon-and-title">
+                        <img src="https://upload.wikimedia.org/wikipedia/he/thumb/e/eb/Bit_logo_2024.svg/1200px-Bit_logo_2024.svg.png" alt="לוגו Bit">
+                        <h3>Bit</h3>
+                    </div>
+                    <p>הדרך המהירה והנוחה ביותר לתרום ישירות דרך אפליקציית Bit.</p>
+                    <div class="details">
+                        מספר טלפון: <strong>054-7743813</strong><br>
+                        שם המוטב: קמפיין רזיאל
+                    </div>
+                    <a href="https://www.bitpay.co.il/he"_blank" class="btn-pay">לתרומה מהירה עם Bit</a>
+                </div>
+
+                <div class="payment-card">
+                    <div class="icon-and-title">
+                        <img src="https://yt3.googleusercontent.com/ytc/AIdro_lhy54u_HxaHGFBzqnJbd6oh7cVzfpbDdxBsCFn4ohvlss=s900-c-k-c0x00ffffff-no-rj" alt="לוגו PayBox">
+                        <h3>PayBox</h3>
+                    </div>
+                    <p>הצטרפו לקבוצת התרומה שלנו בפייבוקס וקחו חלק פעיל.</p>
+                    <div class="details">
+                        מספר טלפון: 054-7743813<br>
+                        מזהה קבוצה: קמפיין רזיאל
+                    </div>
+                    <a href="https://www.payboxapp.com" target="_blank" class="btn-pay">לתרומה דרך PayBox</a>
+                </div>
+
+                <div class="payment-card">
+                    <div class="icon-and-title">
+                        <i class="fas fa-university"></i>
+                        <h3>העברה בנקאית</h3>
+                    </div>
+                    <p>לתמיכה בסכומים גדולים יותר או לקבלת קבלה לצרכי מס.</p>
+                    <div class="details">
+                    </div>
+                    <a href="https://www.bankhapoalim.co.il" class="btn-pay">לפרטים נוספים והוראות</a>
+                </div>
+
+                <div class="payment-card">
+                    <div class="icon-and-title">
+                        <img src="https://img.icons8.com/color/96/bitcoin.png" alt="לוגו Bitcoin">
+                        <h3>Crypto</h3>
+                    </div>
+                    <p>תרומה אנונימית באמצעות מטבעות דיגיטליים לתמיכה גלובלית.</p>
+                    <div class="details">
+                    </div>
+                    <a href="https://bit2c.co.il" class="btn-pay">לתרומה ב-Crypto</a>
+                </div>
+
+            </div>
+            <p style="margin-top: 50px; font-size: 1.3em; max-width: 900px; margin-left: auto; margin-right: auto; font-weight: 700; color: var(--primary-color);">
+                כל שקל שתתרמו הוא השקעה בעתיד של רזיאל ובהבטחה לעולם צודק יותר. תודה על נדיבותכם!
+            </p>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <p>&copy; 2023 קמפיין צדק לרזיאל. כל הזכויות שמורות.</p>
+            <p>לשאלות ומידע נוסף: <a href="mailto:info@raziel.org" style="color: var(--accent-color);">info@raziel.org</a></p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
